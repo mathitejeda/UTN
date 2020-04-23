@@ -1,5 +1,5 @@
-#ifndef FUNCIONES_H_INCLUDED
-#define FUNCIONES_H_INCLUDED
+#ifndef PLATOS_H_INCLUDED
+#define PLATOS_H_INCLUDED
 
 
 
@@ -24,4 +24,4 @@ void cargarplato(platos *p){
 }
 
 
-#endif // FUNCIONES_H_INCLUDED
+#endif // PLATOS_H_INCLUDED

@@ -5,7 +5,7 @@ using namespace std;
 #include "tipos.h"
 #include "rlutil.h"
 using namespace rlutil;
-#include "funciones.h"
+#include "platos.h"
 #include "menus.h"
 
 int main (){
