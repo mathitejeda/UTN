@@ -25,7 +25,7 @@ cout<<"4) PLATOS POR RESTAURANT"<<endl;
 cout<<"4) LISTAR TODOS LOS PLATOS"<<endl;
 cout<<"5) ELIMINAR PLATO"<<endl;
 cout<<"------------------------------"<<endl;
-cout<<"0) VOLVER AL MENÚ PRINCIPAL"<<endl;
+cout<<"0) VOLVER AL MENU PRINCIPAL"<<endl;
 
 
 }

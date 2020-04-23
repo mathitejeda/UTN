@@ -9,7 +9,7 @@ using namespace rlutil;
 #include "menus.h"
 
 int main (){
-    int opcion;
+    int opcion, opcion1;
     while (opcion!=0)
     {
         cls();
@@ -20,16 +20,37 @@ int main (){
         switch (opcion)
         {
         case 1:
+            while(opcion1!=0){
+                cls();
+                SubmenuPlatos();
+                cout<< "Seleccione una opcion: ";
+                cin>> opcion1;
+                cin.ignore();
+                switch (opcion1)
+                {
+                case 1:
+                    break;
+                case 0:
+                    cls();
+                    cout<< "volviendo al menu principal.";
+                    anykey();
+                default:
+                    cls();
+                    cout<< "Opcion invalida";
+                    anykey();
+                    break;
+                }
+            }
             break;
         case 0:
             cls();
             cout<< "Programa finalizado.";
-            getkey();
+            anykey();
             break;
         default:
             cls();
             cout<< "La opcion ingresada no es valida.";
-            getkey();
+            anykey();
             break;
         }
 
