@@ -10,6 +10,7 @@ using namespace rlutil;
 
 int main (){
     int opcion, opcion1;
+    struct platos plato;
     while (opcion!=0)
     {
         cls();
@@ -29,11 +30,15 @@ int main (){
                 switch (opcion1)
                 {
                 case 1:
+                    cls();
+                    nuevoplato();
+                    anykey();
                     break;
                 case 0:
                     cls();
                     cout<< "volviendo al menu principal.";
                     anykey();
+                    break;
                 default:
                     cls();
                     cout<< "Opcion invalida";
