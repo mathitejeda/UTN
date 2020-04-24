@@ -3,7 +3,7 @@
 
 const char * PATH_PLATOS = "datos/platos.dat";
 
-bool cargarplato(platos *p){
+bool cargarplato(struct platos *p){
     cout<< "ID del plato: ";
     cin>> p->ID;
     cout<< "Nombre: ";
@@ -25,7 +25,7 @@ bool cargarplato(platos *p){
     return p->estado;
 }
 
-bool guardarplato (platos reg){
+bool guardarplato (struct platos reg){
     bool guardado;
     FILE *p;
     p=fopen(PATH_PLATOS, "ab");

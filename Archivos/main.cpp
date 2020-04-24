@@ -3,6 +3,7 @@
 #include <cstring>
 using namespace std;
 #include "tipos.h"
+#include "prototipos.h"
 #include "rlutil.h"
 using namespace rlutil;
 #include "platos.h"
