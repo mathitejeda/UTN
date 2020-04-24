@@ -35,10 +35,21 @@ int main (){
                     nuevoplato();
                     anykey();
                     break;
+                
+                case 2:
+                    break;
+                case 3:
+                    cls();
+                    int id;
+                    cout<< "Ingrese el ID del plato a buscar";
+                    cin>> id;
+                    listarporid(id);
+                    anykey();
+                    break;
                 case 0:
                     cls();
-                    cout<< "volviendo al menu principal.";
-                    anykey();
+                    cout<< "volviendo al menu principal...";
+                    msleep(500);
                     break;
                 default:
                     cls();
@@ -46,7 +57,7 @@ int main (){
                     anykey();
                     break;
                 }
-            }
+            } // final menu de platos
             break;
         case 0:
             cls();

@@ -24,6 +24,19 @@ bool cargarplato(struct platos *p){
     
     return p->estado;
 }
+struct platos leer_plato(int pos){
+    struct platos reg;
+    FILE *p;
+    p = fopen(PATH_PLATOS, "rb");
+    if (p == NULL){
+        reg.ID = -1;
+        return reg;
+    }
+    fseek(p, pos * sizeof(platos),SEEK_SET);
+    fread(&reg, sizeof(platos), 1, p);
+    fclose(p);
+    return reg;
+}
 
 bool guardarplato (struct platos reg){
     bool guardado;
@@ -45,6 +58,45 @@ void nuevoplato (){
         else {cout << "No se pudo guardar el plato en el archivo.";}
     }
     else {cout << "No se pudo guardar el plato";}
+}
+
+int buscarplato (int id_busqueda){
+    struct platos reg;
+    FILE *p;
+    int i;
+    p= fopen (PATH_PLATOS,"rb");
+    if (p == NULL){ return -2;}
+    while (fread (&reg,sizeof(platos),1,p)){ // al devolver un booleano sirve de referencia para los condicionales
+        if (reg.ID == id_busqueda){
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+
+void listarplato (struct platos show){
+    cout<< "ID del plato: "<<show.ID<<endl;
+    cout<< "Nombre: "<<show.nombre<<endl;
+    cout << "costo de preparacion: $"<<show.costo_preparacion<<endl;
+    cout<< "Valor de venta: $"<<show.valor_venta<<endl;
+    cout<< "tiempo de preparacion: "<<show.tiempo_preparacion<<endl;
+    cout<< "ID restaurante: "<<show.ID_restaurante<<endl;
+    cout<< "Comision restaurante: "<<show.comision_restaurante<<endl;
+    cout<< "ID categoria: "<<show.ID_categoria<<endl;
+}
+
+void listarporid(int id_buscado){
+    int pos = buscarplato(id_buscado);
+    if (pos >= 0){
+        struct platos reg = leer_plato(pos);
+        listarplato(reg);
+    }
+    else{
+        cout << "No existe el id buscado.";
+    }
 }
 
 #endif // PLATOS_H_INCLUDED
