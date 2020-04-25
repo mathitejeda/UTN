@@ -11,8 +11,9 @@ using namespace rlutil;
 
 int main (){
     int opcion, opcion1;
+    bool principal=true, platos=true;
     struct platos plato;
-    while (opcion!=0)
+    while (principal)
     {
         cls();
         menu_principal();
@@ -22,7 +23,7 @@ int main (){
         switch (opcion)
         {
         case 1:
-            while(opcion1!=0){
+            while(platos){
                 cls();
                 SubmenuPlatos();
                 cout<< "Seleccione una opcion: ";
@@ -48,6 +49,7 @@ int main (){
                     break;
                 case 0:
                     cls();
+                    platos=false;
                     cout<< "volviendo al menu principal...";
                     msleep(500);
                     break;
@@ -61,6 +63,7 @@ int main (){
             break;
         case 0:
             cls();
+            principal=false;
             cout<< "Programa finalizado.";
             anykey();
             break;
