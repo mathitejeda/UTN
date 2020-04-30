@@ -10,10 +10,10 @@ using namespace rlutil;
 #include "menus.h"
 
 int main (){
-    int opcion, opcion1;
-    bool principal=true, platos=true;
+    int opcion;
+    bool salir;
     struct platos plato;
-    while (principal)
+    while (!salir)
     {
         cls();
         menu_principal();
@@ -23,13 +23,13 @@ int main (){
         switch (opcion)
         {
         case 1:
-            while(platos){
+            while(opcion!=0){
                 cls();
                 SubmenuPlatos();
                 cout<< "Seleccione una opcion: ";
-                cin>> opcion1;
+                cin>> opcion;
                 cin.ignore();
-                switch (opcion1)
+                switch (opcion)
                 {
                 case 1:
                     cls();
@@ -49,7 +49,6 @@ int main (){
                     break;
                 case 0:
                     cls();
-                    platos=false;
                     cout<< "volviendo al menu principal...";
                     msleep(500);
                     break;
@@ -63,7 +62,7 @@ int main (){
             break;
         case 0:
             cls();
-            principal=false;
+            salir=true;
             cout<< "Programa finalizado.";
             anykey();
             break;
