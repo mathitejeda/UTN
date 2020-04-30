@@ -93,6 +93,7 @@ void listarporid(int id_buscado){
     if (pos >= 0){
         struct platos reg = leer_plato(pos);
         listarplato(reg);
+        cin.get();
     }
     else{
         cout << "No existe el id buscado.";

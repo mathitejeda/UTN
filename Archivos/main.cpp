@@ -42,10 +42,11 @@ int main (){
                 case 3:
                     cls();
                     int id;
-                    cout<< "Ingrese el ID del plato a buscar";
+                    cout<< "Ingrese el ID del plato a buscar: ";
                     cin>> id;
                     listarporid(id);
                     anykey();
+                    
                     break;
                 case 0:
                     cls();
