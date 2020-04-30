@@ -6,20 +6,49 @@ const char * PATH_PLATOS = "datos/platos.dat";
 bool cargarplato(struct platos *p){
     cout<< "ID del plato: ";
     cin>> p->ID;
+    int idref=buscarplato(p->ID);
+    if (idref>=0) {
+        cout<< "El plato ya existe."<<endl;
+        return false;
+    }
     cout<< "Nombre: ";
     cin>> p->nombre;
     cout << "costo de preparacion: $";
     cin >> p->costo_preparacion;
+    if (p->costo_preparacion<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
     cout<< "Valor de venta: $";
     cin>> p->valor_venta;
+    if(p->valor_venta<p->costo_preparacion){
+        cout<< "El valor de venta no puede ser menor al costo de preparacion"<<endl;
+        return false;
+    }
     cout<< "tiempo de preparacion: ";
     cin>> p->tiempo_preparacion;
+    if (p->tiempo_preparacion<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
     cout<< "ID restaurante: ";
     cin>> p->ID_restaurante;
+    if (p->ID_restaurante<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
     cout<< "Comision restaurante: ";
     cin>> p->comision_restaurante;
+    if (p->comision_restaurante<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
     cout<< "ID categoria: ";
     cin>> p->ID_categoria;
+    if (p->ID_categoria<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
     p->estado = true;
     
     return p->estado;
