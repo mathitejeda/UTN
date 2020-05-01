@@ -67,6 +67,7 @@ int main (){
                     break;
                 
                 case 5:
+                    cls();
                     listar_platos();
                     cin.get();
                     break;
