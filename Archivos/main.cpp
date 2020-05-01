@@ -11,7 +11,7 @@ using namespace rlutil;
 #include "menus.h"
 
 int main (){
-    int opcion;
+    int opcion,id;
     bool salir;
     struct platos plato;
     while (!salir)
@@ -39,10 +39,15 @@ int main (){
                     break;
                 
                 case 2:
+                    cls();
+                    cout<< "Ingrese el ID del plato a modificar: ";
+                    cin>> id;
+                    cin.ignore();
+                    modificacion(id);
+                    anykey();
                     break;
                 case 3:
                     cls();
-                    int id;
                     cout<< "Ingrese el ID del plato a buscar: ";
                     cin>> id;
                     cin.ignore();

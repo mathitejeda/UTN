@@ -53,19 +53,6 @@ bool cargarplato(struct platos *p){
     cin.ignore();
     return p->estado;
 }
-struct platos leer_plato(int pos){
-    struct platos reg;
-    FILE *p;
-    p = fopen(PATH_PLATOS, "rb");
-    if (p == NULL){
-        reg.ID = -1;
-        return reg;
-    }
-    fseek(p, pos * sizeof(platos),SEEK_SET);
-    fread(&reg, sizeof(platos), 1, p);
-    fclose(p);
-    return reg;
-}
 
 bool guardarplato (struct platos reg){
     bool guardado;
@@ -87,6 +74,96 @@ void nuevoplato (){
         else {cout << "No se pudo guardar el plato en el archivo.";}
     }
     else {cout << "No se pudo guardar el plato";}
+}
+
+bool modificar_plato(struct platos *mod){
+    cout<< "Nombre: ";
+    cin>> mod->nombre;
+    cout << "costo de preparacion: $";
+    cin >> mod->costo_preparacion;
+    if (mod->costo_preparacion<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
+    cout<< "Valor de venta: $";
+    cin>> mod->valor_venta;
+    if(mod->valor_venta<mod->costo_preparacion){
+        cout<< "El valor de venta no puede ser menor al costo de preparacion"<<endl;
+        return false;
+    }
+    cout<< "tiempo de preparacion: ";
+    cin>> mod->tiempo_preparacion;
+    if (mod->tiempo_preparacion<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
+    cout<< "ID restaurante: ";
+    cin>> mod->ID_restaurante;
+    if (mod->ID_restaurante<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
+    cout<< "Comision restaurante: ";
+    cin>> mod->comision_restaurante;
+    if (mod->comision_restaurante<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
+    cout<< "ID categoria: ";
+    cin>> mod->ID_categoria;
+    if (mod->ID_categoria<0){
+        cout<< "No se puede ingresar un numero negativo"<<endl;
+        return false;
+    }
+    mod->estado = true;
+    cin.ignore();
+    return mod->estado;
+}
+
+void modificacion(int id){
+    int pos;
+    pos = buscarplato(id);
+    if (pos >= 0){
+        struct platos reg = leer_plato(pos);
+        cout << endl;
+        listarplato(reg);
+        modificar_plato(&reg);
+        if (sobrescribir_plato(reg, pos)){
+            cout << "Producto modificado.";
+        }
+        else{
+            cout << "No se modificó el producto.";
+        }
+    }
+    else{
+        cout << "No existe el producto.";
+    }
+}
+
+bool sobrescribir_plato(struct platos reg, int pos){
+    bool guardado;
+    FILE *p;
+    p = fopen(PATH_PLATOS, "rb+");
+    if (p == NULL){
+        return false;
+    }
+    fseek(p, pos * sizeof(struct platos), SEEK_SET);
+    guardado = fwrite(&reg, sizeof(struct platos), 1, p);
+    fclose(p);
+    return guardado;
+}
+struct platos leer_plato(int pos){
+    struct platos reg;
+    FILE *p;
+    p = fopen(PATH_PLATOS, "rb");
+    if (p == NULL){
+        reg.ID = -1;
+        return reg;
+    }
+    fseek(p, pos * sizeof(platos),SEEK_SET);
+    fread(&reg, sizeof(platos), 1, p);
+    fclose(p);
+    return reg;
 }
 
 int buscarplato (int id_busqueda){
