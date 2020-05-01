@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include <cstdio>
 using namespace std;
 #include "tipos.h"
 #include "prototipos.h"
