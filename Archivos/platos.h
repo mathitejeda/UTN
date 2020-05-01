@@ -190,7 +190,7 @@ int buscar_plato (int id_busqueda){
     p= fopen (PATH_PLATOS,"rb");
     if (p == NULL){ return -2;}
     while (fread (&reg,sizeof(platos),1,p)){ // al devolver un booleano sirve de referencia para los condicionales
-        if (reg.ID == id_busqueda){
+        if (reg.ID == id_busqueda && reg.estado){
             fclose(p);
             return i;
         }
@@ -265,12 +265,13 @@ void listar_por_restaurante(int id_restaurante){
 
 void listar_platos(){
     FILE *p;
+
     struct platos reg;
+
     p=fopen(PATH_PLATOS,"rb");
-    if (p == NULL){
-        fclose(p);
-        return;
-    }
+
+    if (p == NULL){return;}
+
     for (int i=0;i<cantidad_platos();i++)
     {
         reg=leer_plato(i);
@@ -278,6 +279,43 @@ void listar_platos(){
         cout<<endl;
         cout<< "---------------------------------"<<endl;
     }
+
     fclose(p);
+}
+
+
+void eliminar_plato (int id){
+    int pos;
+    char sel;
+    pos = buscar_plato(id);
+    if (pos >= 0){
+        struct platos reg = leer_plato(pos);
+        cout << endl;
+        listar_plato(reg);
+        cout << endl;
+        cout<< "Seguro quiere eliminar el plato? [s/n]: ";
+        cin >> sel;
+        cin.ignore();
+        cls();
+        switch (sel)
+        {
+        case 's':
+        case 'S':
+                reg.estado=false;
+                if (sobrescribir_plato(reg,pos)){
+                    cout << "Plato eliminado";
+                }
+                else {cout<< "Ocurrio un error al eliminar el plato";}
+            break;
+        case 'n':
+        case 'N':
+            cout<< "No se eliminara el plato";
+            return;
+            break;        
+        default:
+            cout << "Opcion invalida.";
+            break;
+        }
+    }
 }
 #endif // PLATOS_H_INCLUDED

@@ -69,12 +69,22 @@ int main (){
                 case 5:
                     cls();
                     listar_platos();
-                    cin.get();
+                    anykey();
                     break;
+
+                case 6:
+                    cls();
+                    cout << "Ingrese el id del plato que desea eliminar: ";
+                    cin >> id;
+                    cin.ignore();
+                    eliminar_plato(id);
+                    anykey();
+                    break;
+
                 case 0:
                     cls();
-                    cout<< "volviendo al menu principal...";
                     msleep(1000);
+                    cout<< "volviendo al menu principal...";
                     break;
                 default:
                     cls();

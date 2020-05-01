@@ -14,5 +14,6 @@ void listar_plato (struct platos);
 void listar_por_id(int);
 void listar_por_restaurante(int);
 void listar_platos();
+void eliminar_plato();
 
 #endif //PROTOTIPOS_H_INCLUDED
