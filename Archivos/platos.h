@@ -50,7 +50,7 @@ bool cargarplato(struct platos *p){
         return false;
     }
     p->estado = true;
-    
+    cin.ignore();
     return p->estado;
 }
 struct platos leer_plato(int pos){

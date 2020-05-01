@@ -44,6 +44,7 @@ int main (){
                     int id;
                     cout<< "Ingrese el ID del plato a buscar: ";
                     cin>> id;
+                    cin.ignore();
                     listarporid(id);
                     anykey();
                     
