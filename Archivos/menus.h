@@ -14,7 +14,7 @@ cout << "----------------------"<<endl;
 cout << "0) SALIR DEL PROGRAMA"<<endl;
 }
 
-void SubmenuPlatos (){
+void Submenu_Platos (){
     
 cout<<"MENU DE PLATOS"<<endl;
 cout<<"------------------"<<endl;

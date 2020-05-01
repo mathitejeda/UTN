@@ -3,10 +3,10 @@
 
 const char * PATH_PLATOS = "datos/platos.dat";
 
-bool cargarplato(struct platos *p){
+bool cargar_plato(struct platos *p){
     cout<< "ID del plato: ";
     cin>> p->ID;
-    int idref=buscarplato(p->ID);
+    int idref=buscar_plato(p->ID);
     if (idref>=0) {
         cout<< "El plato ya existe."<<endl;
         return false;
@@ -54,7 +54,7 @@ bool cargarplato(struct platos *p){
     return p->estado;
 }
 
-bool guardarplato (struct platos reg){
+bool guardar_plato (struct platos reg){
     bool guardado;
     FILE *p;
     p=fopen(PATH_PLATOS, "ab");
@@ -65,10 +65,11 @@ bool guardarplato (struct platos reg){
     fclose(p);
     return guardado;
 }
-void nuevoplato (){
+
+void nuevo_plato (){
     struct platos reg;
-    if (cargarplato(&reg)){
-        if (guardarplato(reg)){
+    if (cargar_plato(&reg)){
+        if (guardar_plato(reg)){
             cout << "Plato guardado correctamente";
         }
         else {cout << "No se pudo guardar el plato en el archivo.";}
@@ -122,21 +123,21 @@ bool modificar_plato(struct platos *mod){
 
 void modificacion(int id){
     int pos;
-    pos = buscarplato(id);
+    pos = buscar_plato(id);
     if (pos >= 0){
         struct platos reg = leer_plato(pos);
         cout << endl;
-        listarplato(reg);
-        modificar_plato(&reg);
+        listar_plato(reg);
+        cout<<endl;
+        if (modificar_plato(&reg)){
         if (sobrescribir_plato(reg, pos)){
-            cout << "Producto modificado.";
+            cout << "plato modificado.";
         }
-        else{
-            cout << "No se modificó el producto.";
+        else{cout << "No se modificó el plato.";}
         }
     }
     else{
-        cout << "No existe el producto.";
+        cout << "No existe el plato.";
     }
 }
 
@@ -152,6 +153,7 @@ bool sobrescribir_plato(struct platos reg, int pos){
     fclose(p);
     return guardado;
 }
+
 struct platos leer_plato(int pos){
     struct platos reg;
     FILE *p;
@@ -166,7 +168,7 @@ struct platos leer_plato(int pos){
     return reg;
 }
 
-int buscarplato (int id_busqueda){
+int buscar_plato (int id_busqueda){
     struct platos reg;
     FILE *p;
     int i;
@@ -183,7 +185,7 @@ int buscarplato (int id_busqueda){
     return -1;
 }
 
-void listarplato (struct platos show){
+void listar_plato (struct platos show){
     cout<< "ID del plato: "<<show.ID<<endl;
     cout<< "Nombre: "<<show.nombre<<endl;
     cout << "costo de preparacion: $"<<show.costo_preparacion<<endl;
@@ -194,11 +196,11 @@ void listarplato (struct platos show){
     cout<< "ID categoria: "<<show.ID_categoria<<endl;
 }
 
-void listarporid(int id_buscado){
-    int pos = buscarplato(id_buscado);
+void listar_por_id(int id_buscado){
+    int pos = buscar_plato(id_buscado);
     if (pos >= 0){
         struct platos reg = leer_plato(pos);
-        listarplato(reg);
+        listar_plato(reg);
         cin.get();
     }
     else{

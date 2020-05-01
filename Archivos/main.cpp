@@ -11,7 +11,7 @@ using namespace rlutil;
 #include "menus.h"
 
 int main (){
-    int opcion,id;
+    int opcion,id, id_busqueda;
     bool salir;
     struct platos plato;
     while (!salir)
@@ -26,7 +26,7 @@ int main (){
         case 1:
             while(opcion!=0){
                 cls();
-                SubmenuPlatos();
+                Submenu_Platos();
                 cout<< "Seleccione una opcion: ";
                 cin>> opcion;
                 cin.ignore();
@@ -34,7 +34,7 @@ int main (){
                 {
                 case 1:
                     cls();
-                    nuevoplato();
+                    nuevo_plato();
                     anykey();
                     break;
                 
@@ -49,9 +49,9 @@ int main (){
                 case 3:
                     cls();
                     cout<< "Ingrese el ID del plato a buscar: ";
-                    cin>> id;
+                    cin>> id_busqueda;
                     cin.ignore();
-                    listarporid(id);
+                    listar_por_id(id_busqueda);
                     anykey();
                     
                     break;
