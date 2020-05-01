@@ -55,10 +55,26 @@ int main (){
                     anykey();
                     
                     break;
+
+                case 4:
+                        cls();
+                        cout<< "Ingrese el id del restaurante a buscar: ";
+                        cin>>  id_busqueda;
+                        cin.ignore();
+                        listar_por_restaurante(id_busqueda);
+                        anykey();
+                    break;
+                
+                case 5:
+                    int cant; 
+                    cant=cantidad_platos();
+                    cout << "El problema no esta en el switch"<<cant;
+                    cin.get();
+                    break;
                 case 0:
                     cls();
                     cout<< "volviendo al menu principal...";
-                    msleep(500);
+                    msleep(1000);
                     break;
                 default:
                     cls();

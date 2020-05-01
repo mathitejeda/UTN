@@ -3,6 +3,21 @@
 
 const char * PATH_PLATOS = "datos/platos.dat";
 
+int cantidad_platos (){
+    int cant,bytes;
+    FILE *p;
+    p=fopen(PATH_PLATOS,"rb");
+    if (p == NULL)
+    {
+        return 0;
+    }
+    fseek(p,0,SEEK_END);
+    bytes = ftell(p);
+    cant= bytes / sizeof(platos);
+    fclose(p);
+    return cant;
+}
+
 bool cargar_plato(struct platos *p){
     cout<< "ID del plato: ";
     cin>> p->ID;
@@ -185,6 +200,22 @@ int buscar_plato (int id_busqueda){
     return -1;
 }
 
+int buscar_restaurante (int id_restaurante){
+    struct platos reg;
+    FILE *p;
+    int i=0;
+    p= fopen(PATH_PLATOS,"rb");
+    while (fread(&reg,sizeof(platos),1,p)){
+        if (reg.ID_restaurante == id_restaurante){
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+
 void listar_plato (struct platos show){
     cout<< "ID del plato: "<<show.ID<<endl;
     cout<< "Nombre: "<<show.nombre<<endl;
@@ -207,4 +238,15 @@ void listar_por_id(int id_buscado){
     }
 }
 
+void listar_por_restaurante(int id_restaurante){
+    int pos= buscar_restaurante(id_restaurante);
+    if (pos>=0){
+        struct platos reg = leer_plato(pos);
+        listar_plato(reg);
+    }
+    else {
+        cout << "El restaurante buscado no existe o no fue ingresado";
+    }
+}
+// arreglar con un vector dinamico 
 #endif // PLATOS_H_INCLUDED
