@@ -171,7 +171,7 @@ struct platos leer_plato(int pos){
 int buscar_plato (int id_busqueda){
     struct platos reg;
     FILE *p;
-    int i;
+    int i=0;
     p= fopen (PATH_PLATOS,"rb");
     if (p == NULL){ return -2;}
     while (fread (&reg,sizeof(platos),1,p)){ // al devolver un booleano sirve de referencia para los condicionales
