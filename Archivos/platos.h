@@ -200,7 +200,7 @@ int buscar_plato (int id_busqueda){
     return -1;
 }
 
-int buscar_restaurante (int id_restaurante){
+bool buscar_restaurante (int id_restaurante){
     struct platos reg;
     FILE *p;
     int i=0;
@@ -208,12 +208,11 @@ int buscar_restaurante (int id_restaurante){
     while (fread(&reg,sizeof(platos),1,p)){
         if (reg.ID_restaurante == id_restaurante){
             fclose(p);
-            return i;
+            return true;
         }
-        i++;
     }
     fclose(p);
-    return -1;
+    return false;
 }
 
 void listar_plato (struct platos show){
@@ -239,14 +238,29 @@ void listar_por_id(int id_buscado){
 }
 
 void listar_por_restaurante(int id_restaurante){
-    int pos= buscar_restaurante(id_restaurante);
-    if (pos>=0){
-        struct platos reg = leer_plato(pos);
-        listar_plato(reg);
+    struct platos reg;
+    FILE *p;
+    p=fopen(PATH_PLATOS,"rb");
+    if (p==NULL){
+        return;
+    }
+    if (!buscar_restaurante(id_restaurante)){
+        cout<< "El restaurante no existe o no fue ingresado";
+        fclose(p);
+        return;
     }
     else {
-        cout << "El restaurante buscado no existe o no fue ingresado";
+    while (fread(&reg,sizeof(platos),1,p)){
+        if (reg.ID_restaurante==id_restaurante)
+        {
+            listar_plato(reg);
+            cout<<endl;
+            cout<< "---------------------------------"<<endl;
+
+        }
     }
+    }
+    fclose (p);
 }
 // arreglar con un vector dinamico 
 #endif // PLATOS_H_INCLUDED

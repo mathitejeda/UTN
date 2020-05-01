@@ -61,6 +61,7 @@ int main (){
                         cout<< "Ingrese el id del restaurante a buscar: ";
                         cin>>  id_busqueda;
                         cin.ignore();
+                        cls();
                         listar_por_restaurante(id_busqueda);
                         anykey();
                     break;

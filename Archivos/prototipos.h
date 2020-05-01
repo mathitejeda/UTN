@@ -8,7 +8,7 @@ bool modificar_plato(struct platos *);
 void modificacion(int);
 bool sobrescribir_plato(struct platos, int);
 int buscar_plato (int);
-int buscar_restaurante (int);
+bool buscar_restaurante (int);
 struct platos leer_plato(int);
 void listar_plato (struct platos);
 void listar_por_id(int);
