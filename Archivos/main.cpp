@@ -67,9 +67,7 @@ int main (){
                     break;
                 
                 case 5:
-                    int cant; 
-                    cant=cantidad_platos();
-                    cout << "El problema no esta en el switch"<<cant;
+                    listar_platos();
                     cin.get();
                     break;
                 case 0:
@@ -90,6 +88,7 @@ int main (){
             salir=true;
             cout<< "Programa finalizado.";
             anykey();
+            cls();
             break;
         default:
             cls();

@@ -262,5 +262,22 @@ void listar_por_restaurante(int id_restaurante){
     }
     fclose (p);
 }
-// arreglar con un vector dinamico 
+
+void listar_platos(){
+    FILE *p;
+    struct platos reg;
+    p=fopen(PATH_PLATOS,"rb");
+    if (p == NULL){
+        fclose(p);
+        return;
+    }
+    for (int i=0;i<cantidad_platos();i++)
+    {
+        reg=leer_plato(i);
+        listar_plato(reg);
+        cout<<endl;
+        cout<< "---------------------------------"<<endl;
+    }
+    fclose(p);
+}
 #endif // PLATOS_H_INCLUDED
