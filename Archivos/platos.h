@@ -26,8 +26,9 @@ bool cargar_plato(struct platos *p){
         cout<< "El plato ya existe."<<endl;
         return false;
     }
+    cin.ignore();
     cout<< "Nombre: ";
-    cin>> p->nombre;
+    cin.getline(p->nombre, 30);
     cout << "costo de preparacion: $";
     cin >> p->costo_preparacion;
     if (p->costo_preparacion<0){
