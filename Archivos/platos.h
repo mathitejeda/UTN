@@ -190,7 +190,7 @@ int buscar_plato (int id_busqueda){
     p= fopen (PATH_PLATOS,"rb");
     if (p == NULL){ return -2;}
     while (fread (&reg,sizeof(platos),1,p)){ // al devolver un booleano sirve de referencia para los condicionales
-        if (reg.ID == id_busqueda && reg.estado){
+        if (reg.ID == id_busqueda && reg.estado==true){
             fclose(p);
             return i;
         }
@@ -216,6 +216,7 @@ bool buscar_restaurante (int id_restaurante){
 }
 
 void listar_plato (struct platos show){
+    if  (show.estado==true){
     cout<< "ID del plato: "<<show.ID<<endl;
     cout<< "Nombre: "<<show.nombre<<endl;
     cout << "costo de preparacion: $"<<show.costo_preparacion<<endl;
@@ -224,6 +225,7 @@ void listar_plato (struct platos show){
     cout<< "ID restaurante: "<<show.ID_restaurante<<endl;
     cout<< "Comision restaurante: "<<show.comision_restaurante<<endl;
     cout<< "ID categoria: "<<show.ID_categoria<<endl;
+    }
 }
 
 void listar_por_id(int id_buscado){
@@ -283,6 +285,56 @@ void listar_platos(){
     fclose(p);
 }
 
+void ordenar_platos(struct platos *vec, int tam){
+  int i, j, pos;
+  platos aux;
+
+  for(i=0; i<tam-1; i++){
+    pos = i;
+    for(j= i+1; j<tam; j++){
+      if (vec[j].ID < vec[pos].ID){
+        pos = j;
+      }
+    }
+    aux = vec[i];
+    vec[i] = vec[pos];
+    vec[pos] = aux;
+  }
+}
+
+void listar_platos_dinamico (){
+
+    int cantidad=cantidad_platos();
+    if (cantidad==0){
+        cout<< "No hay productos";
+        return;
+    }
+
+    struct platos *vec;
+    vec=(struct platos *) malloc (cantidad*sizeof(platos));
+    if (vec== NULL ){
+        cout << "No hay memoria para continuar";
+        return;
+    }
+    FILE *p;
+    p=fopen(PATH_PLATOS, "rb");
+    if (p== NULL){
+        free(vec);
+        cout<< "No existe el archivo";
+        return;
+    }
+    fread(&vec[0],sizeof(platos),cantidad,p);
+    fclose(p);
+
+    ordenar_platos(vec,cantidad);
+
+    for (int i=0;i<cantidad;i++){
+        listar_plato(vec[i]);
+        cout<<endl;
+    }
+    free (vec);
+
+}
 
 void eliminar_plato (int id){
     int pos;

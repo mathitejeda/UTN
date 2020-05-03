@@ -15,5 +15,7 @@ void listar_por_id(int);
 void listar_por_restaurante(int);
 void listar_platos();
 void eliminar_plato();
+void ordenar_platos(platos,int);
+void listar_platos_dinamico();
 
 #endif //PROTOTIPOS_H_INCLUDED

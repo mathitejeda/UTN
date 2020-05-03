@@ -68,7 +68,7 @@ int main (){
                 
                 case 5:
                     cls();
-                    listar_platos();
+                    listar_platos_dinamico();
                     anykey();
                     break;
 
