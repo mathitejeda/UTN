@@ -281,6 +281,7 @@ void listar_platos(){
         listar_plato(reg);
         cout<<endl;
         cout<< "---------------------------------"<<endl;
+        anykey();
     }
 
     fclose(p);
@@ -332,6 +333,7 @@ void listar_platos_dinamico (){
     for (int i=0;i<cantidad;i++){
         listar_plato(vec[i]);
         cout<<endl;
+        anykey();
     }
     free (vec);
 
