@@ -332,7 +332,6 @@ void listar_platos_dinamico (){
     for (int i=0;i<cantidad;i++){
         listar_plato(vec[i]);
         cout<<endl;
-        anykey();
     }
     free (vec);
 
