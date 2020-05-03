@@ -281,7 +281,6 @@ void listar_platos(){
         listar_plato(reg);
         cout<<endl;
         cout<< "---------------------------------"<<endl;
-        anykey();
     }
 
     fclose(p);
