@@ -218,14 +218,14 @@ bool buscar_restaurante (int id_restaurante){
 
 void listar_plato (struct platos show){
     if  (show.estado==true){
-    cout<< "ID del plato: "<<show.ID<<endl;
-    cout<< "Nombre: "<<show.nombre<<endl;
-    cout << "costo de preparacion: $"<<show.costo_preparacion<<endl;
-    cout<< "Valor de venta: $"<<show.valor_venta<<endl;
-    cout<< "tiempo de preparacion: "<<show.tiempo_preparacion<<endl;
-    cout<< "ID restaurante: "<<show.ID_restaurante<<endl;
-    cout<< "Comision restaurante: "<<show.comision_restaurante<<endl;
-    cout<< "ID categoria: "<<show.ID_categoria<<endl;
+    cout<< "*ID del plato: "<<show.ID<<endl;
+    cout<< "*Nombre: "<<show.nombre<<endl;
+    cout <<"*costo de preparacion: $"<<show.costo_preparacion<<endl;
+    cout<< "*Valor de venta: $"<<show.valor_venta<<endl;
+    cout<< "*tiempo de preparacion: "<<show.tiempo_preparacion<<endl;
+    cout<< "*ID restaurante: "<<show.ID_restaurante<<endl;
+    cout<< "*Comision restaurante: "<<show.comision_restaurante<<endl;
+    cout<< "*ID categoria: "<<show.ID_categoria<<endl;
     }
 }
 
