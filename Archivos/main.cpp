@@ -8,12 +8,14 @@ using namespace std;
 #include "rlutil.h"
 using namespace rlutil;
 #include "platos.h"
+#include "clientes.h"
 #include "menus.h"
 
 int main (){
     int opcion,id, id_busqueda;
     bool salir;
     struct platos plato;
+    struct clientes cliente;
     while (!salir)
     {
         cls();
@@ -93,6 +95,34 @@ int main (){
                     break;
                 }
             } // final menu de platos
+            break;
+        
+        case 2:
+            while(opcion!=0){
+            cls();
+            submenu_clientes();
+            cout<< "Seleccione una opcion: ";
+            cin>> opcion;
+            cin.ignore();
+            switch (opcion)
+            {
+            case 1:
+                cls();
+                cargar_cliente(&cliente);
+                anykey();
+                break;
+            
+            case 0:
+                cout << "Volviendo al menu principal";
+                msleep (1000);
+                break;
+            default:
+                cout << "Opcion invalida.";
+                anykey();
+                break;
+            }
+            }
+            
             break;
         case 0:
             cls();

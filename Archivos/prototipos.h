@@ -1,5 +1,6 @@
 #ifndef PROTOTIPOS_H_INCLUDED
 #define PROTOTIPOS_H_INCLUDED
+//Para las funciones "platos"
 int cantidad_platos();
 bool cargar_plato(struct platos *);
 bool guardar_plato (struct platos);
@@ -18,4 +19,11 @@ void eliminar_plato();
 void ordenar_platos(platos,int);
 void listar_platos_dinamico();
 
+//Para las funciones "clientes"
+bool validar_mail (const char*);
+bool validar_fecha (int , int ,int);
+bool cargar_cliente (struct clientes*);
+bool guardar_cliente(struct clientes);
+void nuevo_cliente();
+int buscar_cliente(int);
 #endif //PROTOTIPOS_H_INCLUDED

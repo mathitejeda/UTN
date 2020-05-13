@@ -1,6 +1,5 @@
 #ifndef MENUS_H_INCLUDED
 #define MENUS_H_INCLUDED
-
 void menu_principal()
 {
 cout << "MENU PRINCIPAL       "<<endl;
@@ -29,5 +28,18 @@ cout<<"0) VOLVER AL MENU PRINCIPAL"<<endl;
 
 
 }
+
+void submenu_clientes(){
+cout<< "MENÚ CLIENTES"<<endl;
+cout<< "----------------------------"<<endl;
+cout<< "1) NUEVO CLIENTE"<<endl;
+cout<< "2) MODIFICAR CLIENTE"<<endl;
+cout<< "3) LISTAR CLIENTE POR ID"<<endl;
+cout<< "4) LISTAR TODOS LOS CLIENTES"<<endl;
+cout<< "5) ELIMINAR CLIENTE"<<endl;
+cout<< "----------------------------"<<endl;
+cout<< "0) VOLVER AL MENÚ PRINCIPAL"<<endl;
+}
+
 
 #endif // MENUS_H_INCLUDED
