@@ -97,7 +97,7 @@ int main (){
             } // final menu de platos
             break;
         
-        case 2:
+        case 2: 
             while(opcion!=0){
             cls();
             submenu_clientes();
@@ -108,10 +108,41 @@ int main (){
             {
             case 1:
                 cls();
-                cargar_cliente(&cliente);
+                nuevo_cliente();
                 anykey();
                 break;
             
+            case 2:
+                cls();
+                cout<< "Ingrese el Id del cliente que desea modificar: ";
+                cin>> id;
+                cin.ignore();
+                modificacion_cliente(id);
+                anykey();
+                break;
+
+            case 3:
+                cls();
+                cout<< "Ingrese el id del cliente que desea visualizar: ";
+                cin >> id;
+                cin.ignore();
+                listar_cliente_id(id);
+                anykey();
+                break;
+            case 4:
+                cls();
+                listar_clientes();
+                anykey();
+                break;
+            
+            case 5:
+                cls();
+                cout << "Ingrese el id del cliente que desea eliminar: ";
+                cin >> id;
+                eliminar_cliente(id);
+                anykey();
+                break;
+
             case 0:
                 cout << "Volviendo al menu principal";
                 msleep (1000);
@@ -122,7 +153,6 @@ int main (){
                 break;
             }
             }
-            
             break;
         case 0:
             cls();

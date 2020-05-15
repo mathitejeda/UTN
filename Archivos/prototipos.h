@@ -25,5 +25,15 @@ bool validar_fecha (int , int ,int);
 bool cargar_cliente (struct clientes*);
 bool guardar_cliente(struct clientes);
 void nuevo_cliente();
+bool modificar_cliente (struct clientes);
+bool sobreescribir_cliente (struct clientes);
+void modificacion_cliente (int);
+void listar_cliente_id (int);
+void listar_clientes ();
+void eliminar_cliente (int);
+void listar_cliente (struct clientes);
 int buscar_cliente(int);
+struct clientes leer_cliente(int);
+int cantidad_clientes();
+void ordenar_clientes (struct clientes*, int);
 #endif //PROTOTIPOS_H_INCLUDED
