@@ -141,7 +141,7 @@ struct pedidos leer_pedido (int pos){
     p= fopen (PATH_PEDIDOS,"rb");
     if (p == NULL ) {
         read.ID=-1;
-        return;
+        return read;
         
     }
     fseek(p, pos * sizeof(pedidos),SEEK_SET);
@@ -159,6 +159,7 @@ void listar_pedido(struct pedidos show){
     cout << "*Pedido realizado el: "<<show.fecha_pedido.dia<<"/"<<show.fecha_pedido.mes<<"/"<<show.fecha_pedido.anio<<endl;
     cout << "*Estado: "<< show.estado<<endl;
 }
+
 bool sobreescribir_pedido (struct pedidos mod, int pos){
     bool guardado;
     FILE *p;
