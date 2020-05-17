@@ -23,6 +23,15 @@ struct clientes
     bool estado;
 };
 
+struct pedidos
+{
+    int ID, ID_cliente, ID_plato, cantidad;
+    float precio_unitario, valoracion;
+    fecha fecha_pedido;
+
+    unsigned short int estado;
+
+};
 
 
 #endif // TIPOS_H_INCLUDED

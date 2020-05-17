@@ -9,6 +9,7 @@ using namespace std;
 using namespace rlutil;
 #include "platos.h"
 #include "clientes.h"
+#include "pedidos.h"
 #include "menus.h"
 
 int main (){
@@ -25,7 +26,7 @@ int main (){
         cin.ignore();
         switch (opcion)
         {
-        case 1:
+        case 1: // Menu de platos
             while(opcion!=0){
                 cls();
                 Submenu_Platos();
@@ -97,7 +98,7 @@ int main (){
             } // final menu de platos
             break;
         
-        case 2: 
+        case 2: // Menu de clientes
             while(opcion!=0){
             cls();
             submenu_clientes();
@@ -153,6 +154,35 @@ int main (){
                 break;
             }
             }
+            break;
+
+        case 3: //Menu de pedidos
+            while (opcion != 0){
+            cls();
+            submenu_pedidos();
+            cout<< "Seleccione una opcion: ";
+            cin>> opcion;
+            cin.ignore();
+            switch (opcion){
+            case 1:    
+
+                break;
+            
+            case 0:
+                cout << "Volviendo al menu principal";
+                msleep (1000);
+                break;
+            
+            default:
+                cout << "Opcion invalida.";
+                anykey();
+                break;
+
+            }//E O switch
+            
+            } 
+
+
             break;
         case 0:
             cls();

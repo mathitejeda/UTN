@@ -36,4 +36,15 @@ int buscar_cliente(int);
 struct clientes leer_cliente(int);
 int cantidad_clientes();
 void ordenar_clientes (struct clientes*, int);
+
+// para las funciones de pedidos
+//principales
+void nuevo_pedido();
+
+//auxiliares
+int buscar_pedido(int);
+int cantidad_pedidos();
+bool cargar_pedido(struct pedidos *);
+bool guardar_pedido (struct pedidos);
+float consultar_precio (int);
 #endif //PROTOTIPOS_H_INCLUDED

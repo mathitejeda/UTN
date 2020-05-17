@@ -275,7 +275,7 @@ int cantidad_clientes(){
     int cant, bytes;
     FILE *p;
     fopen(PATH_CLIENTES,"rb");
-    if (p == NULL) return;
+    if (p == NULL) return 0;
     fseek (p, 0, SEEK_END);
     bytes = ftell(p);
     cant = bytes/sizeof(clientes);
