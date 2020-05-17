@@ -149,7 +149,7 @@ void modificacion(int id){
         if (sobrescribir_plato(reg, pos)){
             cout << "plato modificado.";
         }
-        else{cout << "No se modificó el plato.";}
+        else cout << "No se modificó el plato.";
         }
     }
     else{

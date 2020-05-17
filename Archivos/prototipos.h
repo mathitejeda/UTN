@@ -40,11 +40,15 @@ void ordenar_clientes (struct clientes*, int);
 // para las funciones de pedidos
 //principales
 void nuevo_pedido();
-
+void modificar_pedido(int);
 //auxiliares
 int buscar_pedido(int);
 int cantidad_pedidos();
 bool cargar_pedido(struct pedidos *);
 bool guardar_pedido (struct pedidos);
 float consultar_precio (int);
+struct pedidos leer_pedido (int);
+void listar_pedido(struct pedidos show);
+bool sobreescribir_pedido( struct pedidos, int);
+
 #endif //PROTOTIPOS_H_INCLUDED

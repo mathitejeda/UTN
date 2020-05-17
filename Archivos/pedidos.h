@@ -14,7 +14,24 @@ void nuevo_pedido (){
     cout<< "No se pudo registrar el pedido.";
 }
 
+void modificar_pedido(int id){
+    int pos;
+    pos = buscar_pedido(id);
+    if (pos >=0){
+        struct pedidos mod = leer_pedido (pos);
+        listar_pedido (mod);
+        cout << endl;
+        cout << "Ingrese el nuevo estado para el pedido: ";
+        cin  >> mod.estado;
 
+        if (sobreescribir_pedido(mod,pos)){
+            cout << "Estado modificado correctamente";
+        }
+        else cout << "No se pudo modificar el estado";
+
+    }
+    else cout << "No existe el pedido";
+}
 
 // Funciones auxiliares
 
@@ -118,4 +135,38 @@ float consultar_precio (int id){
     return precio.valor_venta;
 }
 
+struct pedidos leer_pedido (int pos){
+    struct pedidos read;
+    FILE *p;
+    p= fopen (PATH_PEDIDOS,"rb");
+    if (p == NULL ) {
+        read.ID=-1;
+        return;
+        
+    }
+    fseek(p, pos * sizeof(pedidos),SEEK_SET);
+    fread(&read, sizeof(pedidos), 1, p);
+    fclose(p);
+    return read;
+}
+
+void listar_pedido(struct pedidos show){
+    cout << "*ID: "<< show.ID<<endl;
+    cout << "*ID de cliente: "<< show.ID_cliente<<endl;
+    cout << "*ID de plato: "<< show.ID_plato<<endl;
+    cout << "*Precio unitario: $"<<show.precio_unitario<<endl;
+    cout << "*Valoracion: "<<show.valoracion<<"/10"<<endl;
+    cout << "*Pedido realizado el: "<<show.fecha_pedido.dia<<"/"<<show.fecha_pedido.mes<<"/"<<show.fecha_pedido.anio<<endl;
+    cout << "*Estado: "<< show.estado<<endl;
+}
+bool sobreescribir_pedido (struct pedidos mod, int pos){
+    bool guardado;
+    FILE *p;
+    p=fopen (PATH_PEDIDOS,"rb+");
+    if (p == NULL) return false;
+    fseek(p, pos * sizeof(struct pedidos), SEEK_SET);
+    guardado = fwrite(&mod, sizeof(struct pedidos), 1, p);
+    fclose(p);
+    return guardado;
+}
 #endif //PEDIDOS_H_INCLUDED

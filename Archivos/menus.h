@@ -42,14 +42,14 @@ cout<< "0) VOLVER AL MENÚ PRINCIPAL"<<endl;
 }
 
 void submenu_pedidos (){
-cout<< "MENÚ PEDIDOS"<<endl;
+cout<< "MENU PEDIDOS"<<endl;
 cout<< "----------------------------"<<endl;
 cout<< "1) NUEVO PEDIDO"<<endl;
 cout<< "2) MODIFICAR PEDIDO"<<endl;
 cout<< "3) LISTAR PEDIDO POR ID"<<endl;
 cout<< "4) LISTAR TODOS LOS PEDIDOS"<<endl;
 cout<< "----------------------------"<<endl;
-cout<< "0) VOLVER AL MENÚ PRINCIPAL"<<endl;
+cout<< "0) VOLVER AL MENU PRINCIPAL"<<endl;
 
 }
 
