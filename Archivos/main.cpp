@@ -165,7 +165,9 @@ int main (){
             cin.ignore();
             switch (opcion){
             case 1:    
-
+                cls ();
+                nuevo_pedido();
+                anykey();
                 break;
             
             case 0:
