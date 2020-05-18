@@ -246,6 +246,8 @@ int main (){
                 break;
             }
             }
+
+            break;
         case 0:
             cls();
             salir=true;

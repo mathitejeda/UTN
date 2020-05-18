@@ -54,7 +54,7 @@ cout<< "0) VOLVER AL MENU PRINCIPAL"<<endl;
 }
 
 void submenu_configuracion (){
-cout << "MENU CONFIGURACIÓN" <<endl;
+cout << "MENU CONFIGURACION" <<endl;
 cout << "------------------" <<endl;
 cout << "1) REALIZAR COPIA DE SEGURIDAD" <<endl;
 cout << "2) RESTAURAR COPIA DE SEGURIDAD" <<endl;
