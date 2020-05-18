@@ -90,35 +90,8 @@ void nuevo_cliente(){
 }
 
 bool modificar_cliente (struct clientes *mod){
-    cout<< "Nombre(s): ";
-    cin.getline(mod->nombres,50);
-    cout<< "Apellido(s): ";
-    cin.getline(mod->apellidos,50);
-    cout<< "mail: ";
-    cin.getline(mod->mail,50);
-    if(!validar_mail(mod->mail)){
-        cout<< "mail invalido";
-        return false;
-    }
-    cout<< "Domicilio: ";
+    cout<< "Nuevo domicilio: ";
     cin.getline(mod->domicilio,100);
-    cout<< "CP: ";
-    cin>>mod->CP;
-    if (mod->CP<1000 || mod->CP>9999) {
-        cout<< "Codigo postal invalido.";
-        return false;
-    }
-    cout<< "Fecha de nacimiento: "<<endl;
-    cout<< "Dia: ";
-    cin>>mod->fecha_nacimiento.dia;
-    cout<< "Mes: ";
-    cin>>mod->fecha_nacimiento.mes;
-    cout<< "Anio: ";
-    cin>>mod->fecha_nacimiento.anio;
-    if (!validar_fecha(mod->fecha_nacimiento.dia,mod->fecha_nacimiento.mes,mod->fecha_nacimiento.anio)){
-        cout<< "Fecha invalida.";
-        return false;
-    }
     mod->estado=true;
     cin.ignore();
     return mod->estado;
@@ -127,7 +100,7 @@ bool modificar_cliente (struct clientes *mod){
 bool sobreescribir_cliente (struct clientes mod,int pos){
     bool sobreescrito;
     FILE *p;
-    p=fopen("PATH_CLIENTES","rb+");
+    p=fopen(PATH_CLIENTES,"rb+");
     if (p==NULL) return false;
     fseek(p, pos * sizeof(struct clientes), SEEK_SET);
     sobreescrito = fwrite (&mod,sizeof(clientes),1,p);
@@ -190,6 +163,7 @@ void listar_clientes (){
     ordenar_clientes(listar,cantidad);
 
     for (int i=0;i<cantidad;i++){
+        cout << ".............................."<<endl;
         listar_cliente(listar[i]);
         cout<<endl;
     }
@@ -290,7 +264,7 @@ void ordenar_clientes (struct clientes *vec, int tam){
   for(i=0; i<tam-1; i++){
     pos = i;
     for(j= i+1; j<tam; j++){
-      if (vec[j].ID < vec[pos].ID){
+      if (strcmp (vec[j].apellidos,vec[pos].apellidos)<0){
         pos = j;
       }
     }
