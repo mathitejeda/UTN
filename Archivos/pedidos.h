@@ -11,7 +11,7 @@ void nuevo_pedido (){
         if (guardar_pedido(nuevo)) cout<< "pedido registrado con el id: "<< nuevo.ID;
         else cout<< "No se pudo guardar el pedido.";
     }
-    cout<< "No se pudo registrar el pedido.";
+    else cout<< "No se pudo registrar el pedido.";
 }
 
 void modificar_pedido(int id){
@@ -33,6 +33,48 @@ void modificar_pedido(int id){
     else cout << "No existe el pedido";
 }
 
+void listar_pedido_id (int id){
+    int pos = buscar_pedido(id);
+    if (pos > 0 ){
+        struct pedidos listar = leer_pedido(pos);
+        listar_pedido(listar);
+    }
+    else cout<< "No existe el id buscado. ";
+}
+
+void listar_pedidos (){
+
+    int cantidad=cantidad_pedidos();
+    if (cantidad == 0){
+        cout<< "No hay pedidos";
+        return;
+    }
+
+    struct pedidos *vec;
+    vec=(struct pedidos *) malloc (cantidad*sizeof(pedidos));
+    if (vec== NULL ){
+        cout << "No hay memoria para continuar";
+        return;
+    }
+    FILE *p;
+    p=fopen(PATH_PEDIDOS, "rb");
+    if (p== NULL){
+        free(vec);
+        cout<< "No existe el archivo";
+        return;
+    }
+    fread(&vec[0],sizeof(pedidos),cantidad,p);
+    fclose(p);
+
+    ordenar_pedidos(vec,cantidad);
+
+    for (int i=0;i<cantidad;i++){
+        listar_pedido(vec[i]);
+        cout<<endl;
+    }
+    free (vec);
+
+}
 // Funciones auxiliares
 
 int buscar_pedido (int id_busqueda){
@@ -95,12 +137,12 @@ bool cargar_pedido(struct pedidos *reg){
         return false;
     }
 
-    cout << "Fecha pedido: ";
+    cout << "Fecha pedido: "<<endl;
     cout << "Dia: ";
     cin >> reg->fecha_pedido.dia;
     cout << "Mes: ";
     cin >> reg->fecha_pedido.mes;
-    cout << "Año: ";
+    cout << "Anio: ";
     cin >> reg->fecha_pedido.anio;
 
     if (!validar_fecha (reg->fecha_pedido.dia,reg->fecha_pedido.mes,reg->fecha_pedido.anio)){
@@ -169,5 +211,22 @@ bool sobreescribir_pedido (struct pedidos mod, int pos){
     guardado = fwrite(&mod, sizeof(struct pedidos), 1, p);
     fclose(p);
     return guardado;
+}
+
+void ordenar_pedidos(struct pedidos *vec, int tam){
+  int i, j, pos;
+  struct pedidos aux;
+
+  for(i=0; i<tam-1; i++){
+    pos = i;
+    for(j= i+1; j<tam; j++){
+      if (vec[j].ID < vec[pos].ID){
+        pos = j;
+      }
+    }
+    aux = vec[i];
+    vec[i] = vec[pos];
+    vec[pos] = aux;
+  }
 }
 #endif //PEDIDOS_H_INCLUDED

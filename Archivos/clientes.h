@@ -35,7 +35,7 @@ bool validar_fecha (int dia, int mes, int anio){
 }
 
 bool cargar_cliente(struct clientes *reg){
-    reg->ID=cantidad_clientes()+1;
+    reg->ID=cantidad_clientes() + 1;
     cout<< "Nombre(s): ";
     cin.getline(reg->nombres,50);
     cout<< "Apellido(s): ";
@@ -43,7 +43,7 @@ bool cargar_cliente(struct clientes *reg){
     cout<< "mail: ";
     cin.getline(reg->mail,50);
     if(!validar_mail(reg->mail)){
-        cout<< "mail invalido";
+        cout<< "mail invalido. ";
         return false;
     }
     cout<< "Domicilio: ";
@@ -51,7 +51,7 @@ bool cargar_cliente(struct clientes *reg){
     cout<< "CP: ";
     cin>>reg->CP;
     if (reg->CP<1000 || reg->CP>9999) {
-        cout<< "Codigo postal invalido.";
+        cout<< "Codigo postal invalido. ";
         return false;
     }
     cout<< "Fecha de nacimiento: "<<endl;
@@ -62,7 +62,7 @@ bool cargar_cliente(struct clientes *reg){
     cout<< "Anio: ";
     cin>>reg->fecha_nacimiento.anio;
     if (!validar_fecha(reg->fecha_nacimiento.dia,reg->fecha_nacimiento.mes,reg->fecha_nacimiento.anio)){
-        cout<< "Fecha invalida.";
+        cout<< "Fecha invalida. ";
         return false;
     }
     reg->estado=true;
@@ -73,9 +73,9 @@ bool cargar_cliente(struct clientes *reg){
 bool guardar_cliente (struct clientes reg){
     bool guardado;
     FILE *p;
-    p=fopen(PATH_CLIENTES,"ab");
-    if (p==NULL) return false;
-    guardado=fwrite(&reg,sizeof(platos),1,p);
+    p = fopen(PATH_CLIENTES,"ab");
+    if (p == NULL) return false;
+    guardado=fwrite(&reg,sizeof(clientes),1,p);
     fclose(p);
     return guardado;
 }
@@ -83,10 +83,10 @@ bool guardar_cliente (struct clientes reg){
 void nuevo_cliente(){
     struct clientes nuevo;
     if (cargar_cliente(&nuevo)){
-        if (guardar_cliente(nuevo)) cout<< "Cliente cargado con exito";
-        else cout<< "No se pudo guardar el cliente.";
+        if (guardar_cliente(nuevo)) cout<< "Cliente cargado con exito! ";
+        else cout<< "No se pudo guardar el cliente. ";
     }
-    cout<< "No se pudo cargar el cliente.";
+    else cout<< "No se pudo cargar el cliente. ";
 }
 
 bool modificar_cliente (struct clientes *mod){
@@ -274,7 +274,7 @@ struct clientes leer_cliente(int pos){
 int cantidad_clientes(){
     int cant, bytes;
     FILE *p;
-    fopen(PATH_CLIENTES,"rb");
+    p=fopen(PATH_CLIENTES,"rb");
     if (p == NULL) return 0;
     fseek (p, 0, SEEK_END);
     bytes = ftell(p);

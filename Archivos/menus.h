@@ -30,7 +30,7 @@ cout<<"0) VOLVER AL MENU PRINCIPAL"<<endl;
 }
 
 void submenu_clientes(){
-cout<< "MENÚ CLIENTES"<<endl;
+cout<< "MENU CLIENTES"<<endl;
 cout<< "----------------------------"<<endl;
 cout<< "1) NUEVO CLIENTE"<<endl;
 cout<< "2) MODIFICAR CLIENTE"<<endl;
@@ -38,7 +38,7 @@ cout<< "3) LISTAR CLIENTE POR ID"<<endl;
 cout<< "4) LISTAR TODOS LOS CLIENTES"<<endl;
 cout<< "5) ELIMINAR CLIENTE"<<endl;
 cout<< "----------------------------"<<endl;
-cout<< "0) VOLVER AL MENÚ PRINCIPAL"<<endl;
+cout<< "0) VOLVER AL MENU PRINCIPAL"<<endl;
 }
 
 void submenu_pedidos (){
@@ -53,4 +53,13 @@ cout<< "0) VOLVER AL MENU PRINCIPAL"<<endl;
 
 }
 
+void submenu_configuracion (){
+cout << "MENU CONFIGURACIÓN" <<endl;
+cout << "------------------" <<endl;
+cout << "1) REALIZAR COPIA DE SEGURIDAD" <<endl;
+cout << "2) RESTAURAR COPIA DE SEGURIDAD" <<endl;
+cout << "--------------------------------" <<endl;
+cout << "0) VOLVER AL MENU PRINCIPAL" <<endl;
+
+}
 #endif // MENUS_H_INCLUDED

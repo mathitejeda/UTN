@@ -2,7 +2,7 @@
 #define PROTOTIPOS_H_INCLUDED
 //Para las funciones "platos"
 int cantidad_platos();
-bool cargar_plato(struct platos *);
+bool cargar_plato(struct platos*);
 bool guardar_plato (struct platos);
 void nuevo_plato ();
 bool modificar_plato(struct platos *);
@@ -41,6 +41,8 @@ void ordenar_clientes (struct clientes*, int);
 //principales
 void nuevo_pedido();
 void modificar_pedido(int);
+void listar_pedido_id (int);
+void listar_pedidos ();
 //auxiliares
 int buscar_pedido(int);
 int cantidad_pedidos();
@@ -50,5 +52,18 @@ float consultar_precio (int);
 struct pedidos leer_pedido (int);
 void listar_pedido(struct pedidos show);
 bool sobreescribir_pedido( struct pedidos, int);
+void ordenar_pedidos(struct pedidos *, int );
 
+// Para funciones de configuracion
+
+void crear_backup();
+void restaurar_backup();
+bool emptiness_verifier ();
+bool is_a_backup_there ();
+bool backup_platos(struct platos *);
+bool backup_clientes(struct clientes *);
+bool backup_pedidos (struct pedidos *);
+bool restaurar_platos (struct platos *);
+bool restaurar_clientes (struct clientes *);
+bool restaurar_pedidos (struct pedidos *);
 #endif //PROTOTIPOS_H_INCLUDED
